@@ -1,5 +1,9 @@
 -- define a factorial function
 function fact (n)
+	if n < 0 then
+		print "error input"
+		return -1
+	end
 	if n == 0 then
 		return 1
 	else
