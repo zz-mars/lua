@@ -1,6 +1,7 @@
 function values(t)
 	local i = 0
-	return function()
+	return function(s,v)
+		print("calling iterator with arguments : ",s,v)
 		i = i + 1
 		return t[i]
 	end
