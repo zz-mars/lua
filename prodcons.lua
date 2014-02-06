@@ -5,15 +5,15 @@ producer = coroutine.create(function ()
 	end
 end)
 
-consumer = coroutine.create(function ()
+consumer = function ()
 	while true do
 		flag,result = coroutine.resume(producer)
 		if flag == true then
 			print("from producer : ",result)
 		end
 	end
-end)
+end
 
 
-coroutine.resume(consumer)
+consumer()
 
