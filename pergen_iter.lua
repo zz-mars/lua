@@ -8,7 +8,7 @@ end
 function permgen (a,n)
 	n = n or #a
 	if n <= 1 then
-		printResult(a)
+		coroutine.yield(a)
 	else
 		for i = 1,n do
 			a[n],a[i] = a[i],a[n]
@@ -18,7 +18,17 @@ function permgen (a,n)
 	end
 end
 
+function permutations (a)
+	local co = coroutine.create(function () permgen(a) end)
+	return function ()
+		local code, res = coroutine.resume(co)
+		return res
+	end
+end
+
 a = {1,2,3}
 
-permgen(a)
+for x in permutations(a) do
+	printResult(x)
+end
 
