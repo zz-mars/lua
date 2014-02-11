@@ -26,9 +26,17 @@ function permutations (a)
 	end
 end
 
+function permutationss (a)
+	return coroutine.wrap(function () permgen (a) end)
+end
+
 a = {1,2,3}
 
 for x in permutations(a) do
 	printResult(x)
+end
+
+for y in permutationss(a) do 
+	printResult(y)
 end
 
